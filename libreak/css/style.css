@@ -1,0 +1,63 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+#right {
+    padding: 10px;
+}
+
+h1 {
+    padding-bottom: 30px;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+form {
+    width: 300px;
+    margin: 20 auto;
+}
+
+.row input {
+    padding: 20px;
+    width: 360px;
+    background-color: #eee;
+    font-family: "Roboto", sans-serif;
+}
+
+.row button {
+    font-family: "Roboto", sans-serif;
+    background-color: #450fb1;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: None;
+}
+
+.row select {
+    padding: 5px;
+    font-family: "Roboto", sans-serif;
+}
+
+.control-label {
+    font-family: "Roboto", sans-serif;
+    width: 80px;
+}
+
+.col-sm-2 {
+    width: 150px;
+}
+
+#account {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#name_welcome {
+    color: #450fb1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 5ex;
+}
