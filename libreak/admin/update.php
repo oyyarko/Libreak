@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $email = $branch = $enrno = "";
-$name_err = $email_err = $branch_err = $enrno_err = "";
+$name = $email = $branch = $enrno = $year = "";
+$name_err = $email_err = $branch_err = $enrno_err = $year_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -44,29 +44,37 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     else{
         $enrno = $input_enrno;
     }
+
+    $input_year = trim($_POST["year"]);
+    if(empty($input_year)){
+        $year_err = "Please enter an year.";     
+    } else{
+        $year = $input_year;
+    }
     
     // Check input errors before inserting in database
    // Check input errors before inserting in database
-   if(empty($name_err) && empty($email_err) && empty($enrno_err) && empty($branch_err)){
+   if(empty($name_err) && empty($email_err) && empty($enrno_err) && empty($branch_err) && empty($year_err)){
     // Prepare an insert statement
-    $sql = "UPDATE users SET name = ?, email = ?, enrno = ?, branch = ? WHERE id=?";
+    $sql = "UPDATE users SET name = ?, email = ?, enrno = ?, branch = ?, year = ? WHERE id=?";
      
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "ssssi", $param_name, $param_address, $param_enrno, $param_branch, $param_id);
+        mysqli_stmt_bind_param($stmt, "sssssi", $param_name, $param_address, $param_enrno, $param_branch, $param_year, $param_id);
         
         // Set parameters
         $param_name = $name;
         $param_address = $email;
         $param_enrno = $enrno;
         $param_branch = $branch;
+        $param_year = $year;
         $param_id = $id;
         
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records created successfully. Redirect to landing page
-            header("location: index.php");
+            header("location: students.php");
             exit();
         } else{
             echo "Something went wrong. Please try again later.";
@@ -107,6 +115,7 @@ mysqli_close($link);
                     $email = $row["email"];
                     $enrno = $row["enrno"];
                     $branch = $row["branch"];
+                    $year = $row["year"];
                     
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
@@ -138,6 +147,8 @@ mysqli_close($link);
     <meta charset="UTF-8">
     <title>Update Record</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
     <style type="text/css">
         .wrapper{
             width: 700px;
@@ -170,14 +181,37 @@ mysqli_close($link);
                             <input type="text" name="enrno" class="form-control" value="<?php echo $enrno; ?>">
                             <span class="help-block"><?php echo $enrno_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($branch_err)) ? 'has-error' : ''; ?>">
-                            <label>Branch</label>
-                            <input type="text" name="branch" class="form-control" value="<?php echo $branch; ?>">
-                            <span class="help-block"><?php echo $branch_err;?></span>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" name="branch">Branch:</label>
+                        <div class="col-sm-6">
+                        <select name="branch">
+                            <option value="Computer Engineering">Computer Engineering</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics and Communication">Electronics and Communication</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Mechnical Engineering">Mechnical Engineering</option>
+                            <option value="Automobile Engineering">Automobile Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                        </select>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                    </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" name="year">Year:</label>
+                        <div class="col-sm-6">
+                        <select name="year">
+                            <option value="1st">1st Year</option>
+                            <option value="2nd">2nd Year</option>
+                            <option value="3rd">3rd Year</option>
+                            <option value="4th">4th Year</option>
+                            <option value="Master">Masters</option>
+                        </select>
+                        </div>
+    </div>
+   
+                        <input type="hidden" name="id" value="<?php echo $id; ?>"/> 
+                
+                        <input type="submit" class="btn btn-primary" value="Update">
+                        <a href="students.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>
             </div>        

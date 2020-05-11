@@ -22,7 +22,7 @@ if(mysqli_num_rows($result) > 0)
 		$_SESSION['enrno'] = $enrno;
 		
 	}
-	header("Location: home.php");
+	header("Location: index.php");
 }
 else
 {

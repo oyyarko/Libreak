@@ -32,6 +32,7 @@ if(mysqli_num_rows($result) > 0)
 
 
 ?>
+
 <div id="account">
 <div class="col-lg-6 col-sm-6">
     <div class="card hovercard">
@@ -47,7 +48,7 @@ if(mysqli_num_rows($result) > 0)
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" style="background-color:#450fb1; border:None" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="stars" class="btn btn-primary" style="background-color:#450fb1; border:None; font-family: 'Roboto';" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Profile</div>
             </button>
         </div>

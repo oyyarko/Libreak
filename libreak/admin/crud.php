@@ -21,6 +21,38 @@ include('server.php');
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<div class="library-header">
+	<h1>Books Panel</h1>
+</div>
+<form method="post" action="server.php" >
+
+	<input type="hidden" name="id" value="<?php echo $id; ?>">
+
+	<div class="input-group">
+		<label>Title</label>
+		<input type="text" name="title" value="<?php echo $title; ?>">
+	</div>
+	<div class="input-group">
+		<label>Author</label>
+		<input type="text" name="author" value="<?php echo $author; ?>">
+	</div>
+    <div class="input-group">
+		<label>Edition</label>
+		<input type="text" name="edition" value="<?php echo $edition; ?>">
+	</div>
+	<div class="input-group">
+		<label>Status</label>
+		<input type="text" name="status" value="<?php echo $status; ?>">
+	</div>
+	<div class="input-group">
+
+		<?php if ($update == true): ?>
+			<button class="btn" type="submit" name="update" style="background: #556B2F;" >Update</button>
+		<?php else: ?>
+			<button class="btn" type="submit" name="save">Save</button>
+		<?php endif ?>
+	</div>
+</form>
 	<?php if (isset($_SESSION['message'])): ?>
 		<div class="msg">
 			<?php 
@@ -62,34 +94,6 @@ include('server.php');
 	
 
 
-<form method="post" action="server.php" >
 
-	<input type="hidden" name="id" value="<?php echo $id; ?>">
-
-	<div class="input-group">
-		<label>Title</label>
-		<input type="text" name="title" value="<?php echo $title; ?>">
-	</div>
-	<div class="input-group">
-		<label>Author</label>
-		<input type="text" name="author" value="<?php echo $author; ?>">
-	</div>
-    <div class="input-group">
-		<label>Edition</label>
-		<input type="text" name="edition" value="<?php echo $edition; ?>">
-	</div>
-	<div class="input-group">
-		<label>Status</label>
-		<input type="text" name="status" value="<?php echo $status; ?>">
-	</div>
-	<div class="input-group">
-
-		<?php if ($update == true): ?>
-			<button class="btn" type="submit" name="update" style="background: #556B2F;" >Update</button>
-		<?php else: ?>
-			<button class="btn" type="submit" name="save">Save</button>
-		<?php endif ?>
-	</div>
-</form>
 </body>
 </html>

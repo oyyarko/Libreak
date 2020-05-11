@@ -33,7 +33,7 @@
                 <div class="container">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Student Details</h2>
-                        <a href="create.php" class="btn btn-primary pull-right">Add New Student</a>
+                      <!--  <a href="create.php" class="btn btn-primary pull-right">Add New Student</a>-->
                     </div>
                     <?php
                     // Include config file
@@ -51,6 +51,7 @@
                                         echo "<th>Enrollment no.</th>";
                                         echo "<th>Branch</th>";
                                         echo "<th>Email</th>";
+                                        echo "<th>Year</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -60,7 +61,8 @@
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>" . $row['enrno'] . "</td>";
                                         echo "<td>" . $row['branch'] . "</td>";
-					                    echo "<td>" . $row['email'] . "</td>";
+                                        echo "<td>" . $row['email'] . "</td>";
+                                        echo "<td>" . $row['year'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
                                             echo "     ";

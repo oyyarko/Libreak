@@ -13,6 +13,16 @@ h1 {
     font-weight: bold;
 }
 
+div a:hover {
+    color: dodgerblue;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+div a {
+    color: #450fb1;
+}
+
 form {
     width: 300px;
     margin: 20 auto;
@@ -54,10 +64,11 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "Roboto", sans-serif;
 }
 
 #name_welcome {
     color: #450fb1;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Roboto", sans-serif;
     font-size: 5ex;
 }

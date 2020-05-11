@@ -20,7 +20,7 @@ include_once('../link.php');
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a href="http://localhost/libreak/admin/" class="navbar-brand" id="header">Libreak</a>
+		<a href="#" class="navbar-brand"><img src="../img/logo.png" height="30" width="100"></a>
 		</div><!--
 		<ul class="nav navbar-nav">
 			<li><a href="registration.php">Registration</a></li>
